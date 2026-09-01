@@ -2,104 +2,73 @@
 @import "../../css/colors.css";
 @import "../../css/z-index.css";
 
-.alert {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-    justify-content: flex-start;
-    border-radius: $space;
-    padding-top: .875rem;
-    padding-bottom: .875rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-bottom: 7px;
-    min-height: 1.5rem;
-    pointer-events: all;
-}
 
-.alert.warn {
-    background: #FFF0DF;
-    border: 1px solid #FF8C1A;
-    box-shadow: 0px 0px 0px 2px rgba(255, 140, 26, 0.25);
+import React, { useState } from "react";
+export default function SignInAlert() {
+  const [open, setOpen] = useState(true);
+  if (!open) return null;
+  return (
+    <div className="alert-overlay">
+      <div className="custom-alert">
+        <button
+          className="close-button"
+          onClick={() => setOpen(false)}
+          aria-label="Close"
+        >
+          ×
+        </button>
+        <h2>Sign in</h2>
+        <p>Sign in to continue using this feature.</p>
+        <div className="sign-in-buttons">
+          <button onClick={() => console.log("Sign in clicked")}>
+            Sign In
+          </button>
+          <button onClick={() => console.log("Create account clicked")}>
+            Create Account
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
-
-.alert.success {
-    /* tw: hardcode these colors because we change extensions-* colors to be something that looks weird here */
-    background: hsla(163, 57%, 85%, 1);
-    border: 1px solid hsla(163, 85%, 30%, 1);
-    box-shadow: 0px 0px 0px 2px hsla(163, 57%, 85%, 1);
+.alert-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 9999;
 }
-
-.alert-spinner {
-    self-align: center;
+.custom-alert {
+  position: relative;
+  width: min(420px, 90%);
+  padding: 28px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
-
-.icon-section {
-    min-width: 1.25rem;
-    min-height: 1.25rem;
-    display: flex;
-    padding-right: 1rem;
+.custom-alert h2 {
+  margin-top: 0;
 }
-
-.alert-icon {
-    vertical-align: middle;
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
 }
-
-.alert-message {
-    color: #555;
-    font-weight: bold;
-    font-size: .8125rem;
-    line-height: .875rem;
-    display: flex;
-    align-items: center;
-    padding-right: .5rem;
+.sign-in-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
 }
-
-.alert-buttons {
-    display: flex;
-    flex-direction: row;
-}
-
-.alert-close-button {
-    outline-style:none;
-}
-
-.alert-close-button-container {
-    outline-style: none;
-    width: 30px;
-    height: 30px;
-    align-self: center;
-}
-
-.alert-connection-button {
-    min-height: 2rem;
-    width: 6.5rem;
-    padding: 0.55rem 0.9rem;
-    border-radius: 0.35rem;
-    background: #FF8C1A;
-    color: white;
-    font-weight: 700;
-    font-size: 0.77rem;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: stretch;
-    outline-style:none;
-}
-
-[dir="ltr"] .alert-connection-button {
-    margin-right: 13px;
-}
-
-[dir="rtl"] .alert-connection-button {
-    margin-left: 13px;
-}
-
-/* prevent last button in list from too much margin to edge of alert */
-.alert-buttons > :last-child {
-    margin-left: 0;
-    margin-right: 0;
+.sign-in-buttons button {
+  flex: 1;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
 }
