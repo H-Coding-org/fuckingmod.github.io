@@ -1,16 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="34px" height="34px" viewBox="1 1 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
-    <title>Bottom Left Handle</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <path d="M17,5 C23.627417,5 29,10.372583 29,17 L29,29 L17,29 C10.372583,29 5,23.627417 5,17 C5,10.372583 10.372583,5 17,5 Z" id="path-1"></path>
-    </defs>
-    <g id="Bottom-Left-Handle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Bottom-Left" transform="translate(17.000000, 17.000000) scale(1, -1) translate(-17.000000, -17.000000) ">
-            <use stroke="#FF14F733" stroke-width="8" xlink:href="#path-1"></use>
-            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
-            <use stroke="#ff14f7" stroke-width="1" fill="#d414ff" fill-rule="evenodd" xlink:href="#path-1"></use>
-        </g>
-    </g>
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blueRed" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#FF1744"/>
+    </linearGradient>
+  </defs>
+
+  <path
+    d="M4 4v20c0 2.2 1.8 4 4 4h20v-5H9c-0.6 0-1-0.4-1-1V4H4z"
+    fill="url(#blueRed)"
+  />
 </svg>
