@@ -1,4 +1,5 @@
-scratch-gui modified for use in [TurboWarp](https://turbowarp.org/) then modified for use in [PenguinMod](https://studio.penguinmod.com) then modified for use in [Snail IDE](https://editor.snail-ide.com) 😀
+scratch-gui modified for use in [TurboWarp](https://turbowarp.org/) then modified for use in [PenguinMod](https://studio.penguinmod.com) then modified for use in [Snail IDE](https://editor.snail-ide.com) then modified for [FuckingMod](https://fuckingmod.vercel.a
+pp) 😀
 
 Snail IDE: src/lib/default-project/592bae6f8bb9c8d88401b54ac431f7b6.svg is based on [Twemoji](https://twemoji.twitter.com/) and is licensed under CC BY 4.0 https://creativecommons.org/licenses/by/4.0/   
 ## Setup
