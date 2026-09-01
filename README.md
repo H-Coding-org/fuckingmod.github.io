@@ -2,10 +2,10 @@ scratch-gui modified for use in [TurboWarp](https://turbowarp.org/) then modifie
 
 Snail IDE: src/lib/default-project/592bae6f8bb9c8d88401b54ac431f7b6.svg is based on [Twemoji](https://twemoji.twitter.com/) and is licensed under CC BY 4.0 https://creativecommons.org/licenses/by/4.0/   
 ## Setup
-to run snail ide on your computer, you'll need nvm (node version manager).<br>
+to run fuckingmod on your computer, you'll need nvm (node version manager).<br>
 type ``nvm install 16`` then ``nvm use 16`` in your terminal. (if your on windows, accept the uac prompts)<br>
 then your gonna need pnpm. there may be other ways to install snail ides dependencies without pnpm, but right now you'll need it. you can install it by typing ``npm install -g pnpm``. <br>
-after you install pnpm, clone the snail ide gui with ``git clone https://github.com/snail-ide/snail-ide.github.io``.<br>
+after you install pnpm, clone the snail ide/your fork if you’re feeling spicy gui with ``git clone https://github.com/snail-ide/snail-ide.github.io``.<br>
 then run ``pnpm i --shamefully-hoist``. after that, you can type ``npm start`` or ``pnpm start`` or ``yarn start`` if you have yarn.<br/>
 if you want to use node 17+ , you'll have to add the enviroment variable `NODE_OPTIONS` with the content `--openssl-legacy-provider` before the start command.<br/>
 on linux/github codespaces you can do that by running the command `export NODE_OPTIONS=--openssl-legacy-provider`.
