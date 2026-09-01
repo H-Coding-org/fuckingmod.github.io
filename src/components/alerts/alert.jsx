@@ -1,140 +1,69 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import {FormattedMessage} from 'react-intl';
-
-import Box from '../box/box.jsx';
-import CloseButton from '../close-button/close-button.jsx';
-import Spinner from '../spinner/spinner.jsx';
-import {AlertLevels} from '../../lib/alerts/index.jsx';
-
-import styles from './alert.css';
-
-const closeButtonColors = {
-    [AlertLevels.SUCCESS]: CloseButton.COLOR_GREEN,
-    [AlertLevels.WARN]: CloseButton.COLOR_ORANGE
-};
-
-const AlertComponent = ({
-    content,
-    closeButton,
-    extensionName,
-    iconSpinner,
-    iconURL,
-    level,
-    showDownload,
-    showSaveNow,
-    onCloseAlert,
-    onDownload,
-    onSaveNow,
-    onReconnect,
-    showReconnect
-}) => (
-    <Box
-        className={classNames(styles.alert, styles[level])}
-    >
-        {/* TODO: implement Rtl handling */}
-        {(iconSpinner || iconURL) && (
-            <div className={styles.iconSection}>
-                {iconSpinner && (
-                    <Spinner
-                        className={styles.alertSpinner}
-                        level={level}
-                    />
-                )}
-                {iconURL && (
-                    <img
-                        className={styles.alertIcon}
-                        src={iconURL}
-                    />
-                )}
-            </div>
-        )}
-        <div className={styles.alertMessage}>
-            {extensionName ? (
-                <FormattedMessage
-                    defaultMessage="Lost connection to {extensionName}."
-                    description="Message indicating that an extension peripheral has been disconnected"
-                    id="tw.alerts.lostPeripheralConnection"
-                    values={{
-                        extensionName: (
-                            `${extensionName}`
-                        )
-                    }}
-                />
-            ) : content}
+import React, { useState } from "react";
+export default function SignInAlert() {
+  const [open, setOpen] = useState(true);
+  if (!open) return null;
+  return (
+    <div className="alert-overlay">
+      <div className="custom-alert">
+        <button
+          className="close-button"
+          onClick={() => setOpen(false)}
+          aria-label="Close"
+        >
+          ×
+        </button>
+        <h2>Sign in</h2>
+        <p>Sign in to continue using this feature.</p>
+        <div className="sign-in-buttons">
+          <button onClick={() => console.log("Sign in clicked")}>
+            Sign In
+          </button>
+          <button onClick={() => console.log("Create account clicked")}>
+            Create Account
+          </button>
         </div>
-        <div className={styles.alertButtons}>
-            {showSaveNow && (
-                <button
-                    className={styles.alertConnectionButton}
-                    onClick={onSaveNow}
-                >
-                    <FormattedMessage
-                        defaultMessage="Try Again"
-                        description="Button to try saving again"
-                        id="gui.alerts.tryAgain"
-                    />
-                </button>
-            )}
-            {showDownload && (
-                <button
-                    className={styles.alertConnectionButton}
-                    onClick={onDownload}
-                >
-                    <FormattedMessage
-                        defaultMessage="Download"
-                        description="Button to download project locally"
-                        id="gui.alerts.download"
-                    />
-                </button>
-            )}
-            {showReconnect && (
-                <button
-                    className={styles.alertConnectionButton}
-                    onClick={onReconnect}
-                >
-                    <FormattedMessage
-                        defaultMessage="Reconnect"
-                        description="Button to reconnect the device"
-                        id="gui.connection.reconnect"
-                    />
-                </button>
-            )}
-            {closeButton && (
-                <Box
-                    className={styles.alertCloseButtonContainer}
-                >
-                    <CloseButton
-                        className={classNames(styles.alertCloseButton)}
-                        color={closeButtonColors[level]}
-                        size={CloseButton.SIZE_LARGE}
-                        onClick={onCloseAlert}
-                    />
-                </Box>
-            )}
-        </div>
-    </Box>
-);
-
-AlertComponent.propTypes = {
-    closeButton: PropTypes.bool,
-    content: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-    extensionName: PropTypes.string,
-    iconSpinner: PropTypes.bool,
-    iconURL: PropTypes.string,
-    level: PropTypes.string,
-    onCloseAlert: PropTypes.func.isRequired,
-    onDownload: PropTypes.func,
-    onReconnect: PropTypes.func,
-    onSaveNow: PropTypes.func,
-    showDownload: PropTypes.bool,
-    showReconnect: PropTypes.bool,
-    showSaveNow: PropTypes.bool
-};
-
-AlertComponent.defaultProps = {
-    level: AlertLevels.WARN
-};
-
-export default AlertComponent;
+      </div>
+    </div>
+  );
+}
+.alert-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 9999;
+}
+.custom-alert {
+  position: relative;
+  width: min(420px, 90%);
+  padding: 28px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+.custom-alert h2 {
+  margin-top: 0;
+}
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+}
+.sign-in-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.sign-in-buttons button {
+  flex: 1;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
